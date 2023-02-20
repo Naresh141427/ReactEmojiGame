@@ -1,0 +1,46 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #9796f0;
+  width: 100%;
+  padding: 15px;
+}
+.navbar-container-end {
+  display: flex;
+  background-color: #9796f0;
+  width: 100%;
+  padding: 15px;
+}
+.game-title-container {
+  display: flex;
+  align-items: center;
+}
+.game-title-container-end {
+  display: flex;
+  align-items: center;
+  margin-left: 470px;
+}
+.emoji-logo {
+  height: 70px;
+  width: 70px;
+}
+
+.game-title {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 25px;
+  font-weight: 700;
+}
+.score-container {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.score {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 23px;
+  font-weight: 400;
+}
