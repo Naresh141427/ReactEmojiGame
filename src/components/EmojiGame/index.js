@@ -112,14 +112,14 @@ class EmojiGame extends Component {
   }
 
   shuffleAndMarkScore = id => {
-    const {prevEmojiList, selectedEmojiList} = this.state
+    const {prevEmojiList, selectedEmojiList, score} = this.state
     const shuffledEmojisList = () => emojisList.sort(() => Math.random() - 0.5)
 
     this.setState({prevEmojiList: shuffledEmojisList()})
 
     const newlySelectedEmojis = emojisList.filter(each => each.id === id)
 
-    if (!selectedEmojiList.includes(id)) {
+    if (!selectedEmojiList.includes(id) && score < 11) {
       this.setState(prevState => ({
         selectedEmojiList: [
           ...prevState.selectedEmojiList,
@@ -127,21 +127,19 @@ class EmojiGame extends Component {
         ],
         score: prevState.score + 1,
       }))
+    } else if (score === emojisList.length - 1) {
+      this.setState(prevState => ({
+        score: prevState.score + 1,
+        topScore: score > prevState.topScore ? score + 1 : prevState.topScore,
+        isGameEnded: !prevState.isGameEnded,
+        result: true,
+      }))
     } else {
-      const {score} = this.state
-      if (score === emojisList.length) {
-        this.setState(prevState => ({
-          topScore: score > prevState.topScore ? score : prevState.topScore,
-          isGameEnded: !prevState.isGameEnded,
-          result: true,
-        }))
-      } else {
-        this.setState(prevState => ({
-          topScore: score > prevState.topScore ? score : prevState.topScore,
-          isGameEnded: !prevState.isGameEnded,
-          result: false,
-        }))
-      }
+      this.setState(prevState => ({
+        topScore: score > prevState.topScore ? score : prevState.topScore,
+        isGameEnded: !prevState.isGameEnded,
+        result: false,
+      }))
     }
   }
 
@@ -155,7 +153,6 @@ class EmojiGame extends Component {
       isGameEnded,
     } = this.state
     const lastItem = selectedEmojiList[selectedEmojiList.length - 1]
-    console.log(selectedEmojiList)
     return (
       <>
         <NavBar

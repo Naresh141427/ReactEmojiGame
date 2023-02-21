@@ -9,7 +9,6 @@ const EmojiCard = props => {
     score,
     restartingGame,
   } = props
-  console.log(emojiObject)
   const {id, emojiUrl, emojiName} = emojiObject
 
   const resultImageUrl = result
